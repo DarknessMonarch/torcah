@@ -1,0 +1,97 @@
+@media screen {
+  .subscribeContainer {
+    height: 100%;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .subscribeInfo {
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .subscribeInfoTop{
+    gap: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .subscribeInfoTop h1 {
+    font-size: 1.5rem;
+
+  }
+
+  .subscribeInfoTop p {
+    font-size: 1rem;
+  }
+
+  .subscribeInput {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    border-radius: 12px;
+    color: var(--background-color);
+    justify-content: space-between;
+    background-color: var(--primary-color);
+  }
+  
+  .subscribeInput input {
+    color: var(--background-color);
+    background-color: transparent;
+    padding: 10px;
+    display: flex;
+    outline: none;
+    border: none;
+    width: 100%;
+  }
+
+  .subscribeBtn {
+    cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 12px;
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+  }
+
+  .subscribeBtn:hover {
+    background-color: #eb3d37;
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .subscribeContainer {
+    padding: 150px 0;
+  }
+
+  .subscribeInfoTop h1 {
+    font-size: 1.8rem;
+
+  }
+
+
+  .subscribeInfoTop p {
+    font-size: 1rem;
+  }
+
+ 
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}

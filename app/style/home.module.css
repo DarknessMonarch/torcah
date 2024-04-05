@@ -1,0 +1,97 @@
+@media screen {
+  .homeWrapper {
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .homeContainer {
+    gap: 20px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .heroContain {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heroContain h1 {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  .heroContain p {
+    font-weight: 100;
+    font-size: 1rem;
+  }
+
+  .heroBtnContainer {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .appBtn {
+    width: 140px;
+    cursor: pointer;
+    object-fit: contain;
+  }
+
+  .heroImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+  .homeContainer {
+    height: 100%;
+    flex-direction: row;
+  }
+
+  .heroContain {
+    flex: 50%;
+    justify-content: center;
+  }
+
+  .heroImageContainer {
+    flex: 50%;
+  }
+
+  .heroContain p {
+    font-size: 1.1rem;
+  }
+
+  .appBtn {
+    width: 150px;
+  }
+
+  .heroImageContainer {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}
