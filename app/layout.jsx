@@ -5,13 +5,14 @@ import "@/app/style/global.css";
 const lato = Lato({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://torcah.com/"),
+  metadataBase: new URL("https://torcah.vercel.app"),
   title: "Torcah",
   applicationName: "Torcah",
   author: "Torcah",
+  images: "https://raw.githubusercontent.com/zero-stealth/torcah/master/public/assets/banner.png",
   description:
     "Streamline Your Delivery, Car Sales, and House Transactions for Seamless Experiences",
-    metadataBase: new URL("https://torcah.com"),
+    metadataBase: new URL("https://torcah.vercel.app"),
     keywords: [
     "buy car",
     "sell car",
@@ -27,9 +28,9 @@ export const metadata = {
     title: "Torcah",
     description:
       "Streamline Your Delivery, Car Sales, and House Transactions for Seamless Experiences",
-    url: "https://torcah.com/",
+    url: "https://torcah.vercel.app/",
     siteName: "Torcah",
-    images: "/assets/banner.png",
+    images: "https://raw.githubusercontent.com/zero-stealth/torcah/master/public/assets/banner.png",
   },
   robots: {
     index: false,
