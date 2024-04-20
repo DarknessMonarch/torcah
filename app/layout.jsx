@@ -54,7 +54,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={lato.className}>
         <Toaster
-          position="top-right"
+          position="top-left"
           reverseOrder={false}
           gutter={8}
           containerClassName=""

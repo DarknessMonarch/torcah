@@ -20,7 +20,7 @@ import {
 export default function Navbar() {
   const router = useRouter();
   const [show, setShow] = useState(false);
-  const { isAuth, toggleAuth } = useAuthStore();
+  const { isAuth, role, toggleAuth } = useAuthStore();
   const [profileImg, setProfileImg] = useState(
     "https://static.wikia.nocookie.net/p__/images/b/bf/Sung_Jin-Woo_manhwa_render_cool.webp/revision/latest/scale-to-width-down/250?cb=20230918011835&path-prefix=protagonist"
   );
@@ -82,14 +82,25 @@ export default function Navbar() {
         >
           Onboarding
         </Link>
-        <Link
-          href="/page/contact"
-          className={`${styles.LinkContainer} ${
-            pathname === "/page/contact" ? styles.activeLink : ""
-          }`}
-        >
-          Contact
-        </Link>
+        {role !== null && role === "Business" ? (
+            <Link
+              href="/page/manage"
+              className={`${styles.LinkContainer} ${
+                pathname === "/page/manage" ? styles.activeLink : ""
+              }`}
+            >
+              Manage
+            </Link>
+          ) : role !== null && role !== "Business" ? (
+            <Link
+              href="/page/status"
+              className={`${styles.LinkContainer} ${
+                pathname === "/page/manage" ? styles.activeLink : ""
+              }`}
+            >
+              Status
+            </Link>
+          ) : null}
       </div>
       <MenuIcon
         onClick={() => toggleShow()}
@@ -199,6 +210,37 @@ export default function Navbar() {
               height={20}
             />
           </Link>
+          {role !== null && role === "Business" ? (
+            <Link
+              href="/page/manage"
+              className={`${styles.sideLinkContainer} ${
+                pathname === "/page/manage" ? styles.activeLink : ""
+              }`}
+            >
+              Manage{" "}
+              <RightIcon
+                className={styles.arrowIcon}
+                alt="right icon"
+                width={20}
+                height={20}
+              />
+            </Link>
+          ) : role !== null && role !== "Business" ? (
+            <Link
+              href="/page/status"
+              className={`${styles.sideLinkContainer} ${
+                pathname === "/page/manage" ? styles.activeLink : ""
+              }`}
+            >
+              Status{" "}
+              <RightIcon
+                className={styles.arrowIcon}
+                alt="right icon"
+                width={20}
+                height={20}
+              />
+            </Link>
+          ) : null}
           <Link
             href="/page/onboarding"
             className={`${styles.sideLinkContainer} ${
@@ -206,20 +248,6 @@ export default function Navbar() {
             }`}
           >
             Onboarding
-            <RightIcon
-              className={styles.arrowIcon}
-              alt="right icon"
-              width={20}
-              height={20}
-            />
-          </Link>
-          <Link
-            href="/page/contact"
-            className={`${styles.sideLinkContainer} ${
-              pathname === "/page/contact" ? styles.activeLink : ""
-            }`}
-          >
-            Contact
             <RightIcon
               className={styles.arrowIcon}
               alt="right icon"

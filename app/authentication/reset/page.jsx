@@ -11,7 +11,6 @@ import styles from "@/app/style/auth.module.css";
 
 import {
   KeyIcon as PasswordIcon,
-  UserIcon as UserNameIcon,
   EyeIcon as ShowPasswordIcon,
   EyeSlashIcon as HidePasswordIcon,
 } from "@heroicons/react/24/outline";
@@ -45,9 +44,7 @@ export default function Reset() {
     router.push("/page/terms", { scroll: false });
   };
 
-  const forgotPassword = () => {
-    router.push("forgot", { scroll: false });
-  };
+
 
   const Login = () => {
     router.push("login", { scroll: false });
@@ -64,9 +61,8 @@ export default function Reset() {
       //   body: formData,
       // });
 
-      toggleAuth();
-      toast.success("Welcome");
-      router.push("/page/home", { scroll: false });
+      toast.success("Reset link successful");
+      router.push("/page/login", { scroll: false });
     } catch (error) {
       console.error(error);
       toast.error("Sign up failed");

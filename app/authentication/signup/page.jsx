@@ -13,6 +13,7 @@ import {
   KeyIcon as PasswordIcon,
   UserIcon as UserNameIcon,
   EyeIcon as ShowPasswordIcon,
+  BriefcaseIcon as BusinessIcon,
   EyeSlashIcon as HidePasswordIcon,
 } from "@heroicons/react/24/outline";
 
@@ -22,6 +23,7 @@ export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
   const { isAuth, toggleAuth } = useAuthStore();
   const [terms, setTerms] = useState(false);
+  const [role, setRole] = useState("Business"); 
 
   const router = useRouter();
 
@@ -64,7 +66,7 @@ export default function SignUp() {
       //   body: formData,
       // });
 
-      toggleAuth();
+      toggleAuth('ssiahis', role); 
       toast.success("Welcome");
       router.push("/page/home", { scroll: false });
     } catch (error) {
@@ -88,8 +90,8 @@ export default function SignUp() {
       <div className={styles.authWrapper}>
         <form onSubmit={onSubmit} className={styles.formContainer}>
           <div className={styles.formHeader}>
-            <h1>Sign up</h1>
-            <p>Enter your account details</p>
+            <h1>Onboard your <span>{role}</span> </h1>
+            <p>Enter account details</p>
           </div>
           {/* Username */}
 
@@ -122,7 +124,11 @@ export default function SignUp() {
               id="Password"
               placeholder="Password"
             />
-            <button type="button" className={styles.showBtn} onClick={toggleShowPassword}>
+            <button
+              type="button"
+              className={styles.showBtn}
+              onClick={toggleShowPassword}
+            >
               {showPassword ? (
                 <HidePasswordIcon
                   className={styles.authIcon}
@@ -153,7 +159,11 @@ export default function SignUp() {
               id="confirmPassword"
               placeholder="Confirm Password"
             />
-            <button type="button" className={styles.showBtn} onClick={toggleConfirmPassword}>
+            <button
+              type="button"
+              className={styles.showBtn}
+              onClick={toggleConfirmPassword}
+            >
               {showConfirmPassword ? (
                 <HidePasswordIcon
                   className={styles.authIcon}
@@ -169,6 +179,24 @@ export default function SignUp() {
               )}
             </button>
           </div>
+          {/* Role dropdown */}
+          <div className={styles.authInput}>
+          <BusinessIcon
+                  className={styles.authIcon}
+                  width={20}
+                  height={20}
+                />
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className={styles.roleSelect}
+            >
+              <option value="Business">Add your Business</option>
+              <option value="House">Add your House</option>
+              <option value="Car">Add your Car</option>
+              <option value="Driver">Be a Driver</option>
+            </select>
+          </div>
           <div className={styles.formChange}>
             <div className={styles.termsContainer}>
               <input
@@ -182,18 +210,18 @@ export default function SignUp() {
             <span onClick={forgotPassword}>Forgot Password</span>
           </div>
           <div className={styles.authBottomBtn}>
-               <button
-            type="submit"
-            disabled={isLoading}
-            className={styles.formAuthButton}
-          >
-            {isLoading ? <Loader /> : "Sign up"}
-          </button>
-          <p>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={styles.formAuthButton}
+            >
+              {isLoading ? <Loader /> : "Sign up"}
+            </button>
+            <p>
               <span onClick={readTerms}>Terms and Condition</span> &{" "}
               <span onClick={policy}> Privacy Policy</span>{" "}
             </p>
-          </div> 
+          </div>
           <h3>
             Already have an account?{" "}
             <div className={styles.btnLogin} onClick={Login}>

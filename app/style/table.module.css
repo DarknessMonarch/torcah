@@ -1,0 +1,182 @@
+@media screen {
+  .tableContainer {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    height: fit-content;
+    border-radius: 12px;
+    flex-direction: column;
+    color: var(--dark-background-color);
+    background-color: var(--background-color);
+  }
+
+  .tableHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tableHeader h1 {
+    font-size: 1rem;
+  }
+
+  .dateFilter {
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: var(--primary-color);
+    background-color: var(--light-shade-color);
+  }
+
+  .tableContainer table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+  }
+
+  .tableContainer thead {
+    width: 100%;
+    border-top: 1px solid var(--light-background-color);
+    border-bottom: 1px solid var(--light-background-color);
+  }
+
+   
+  .scrollTable {
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+
+  .tableContainer th,
+  .tableContainer td {
+    padding: 10px;
+    font-weight: 500;
+    font-size: .9rem;
+    border-bottom: none;
+  }
+  
+  .tableContainer td {
+    font-size: .9rem;
+    cursor: pointer;
+  }
+
+  .tableContainer tr:nth-child(even) {
+    border-radius: 12px;
+    background-color: var(--light-shade-color);
+  }
+
+  .tableProfile {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  
+
+  .tableProfileImage {
+    object-fit: cover;
+    border-radius: 360%;
+    object-position: center;
+  }
+
+  .tableBtn {
+    gap: 10px;
+    display: flex;
+    padding: 8px;
+    cursor: pointer;
+    font-size: .7rem;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+  }
+
+  .tableBtn:hover {
+    background-color: #51d651;
+  }
+
+  .tableBtnContainer {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .editIcon {
+    color: var(--secondary-color);
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+  }
+
+  .deleteIcon {
+    color: var(--tertiary-color);
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+  }
+
+  .chatIcon {
+    color: var(--primary-color);
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+  }
+
+
+  .tablePending {
+    padding: 10px;
+    width: fit-content;
+    background-color: var(--light-shade-color);
+  }
+
+  .succesStat {
+    color: var(--secondary-color);
+  }
+
+  .pendingStat {
+    color: var(--high-color);
+  }
+
+  .failStat{
+    color: var(--tertiary-color);
+
+  }
+    
+}
+
+@media only screen and (min-width: 48em) {
+  .tableContainer {
+    padding: 10px;
+  }
+  
+  .tableContainer tbody {
+    height: 200px;
+    overflow: auto;
+  }
+  
+  .tableContainer thead,
+  .tableContainer tbody tr {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+  }
+  
+  
+  .tableContainer  thead {
+    width: calc(100% - 1em);
+  }
+
+  .scrollTable {
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+
+
+}

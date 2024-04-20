@@ -15,7 +15,6 @@ import {
 
 export default function Forgot() {
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuth, toggleAuth } = useAuthStore();
   const [terms, setTerms] = useState(false);
 
   const router = useRouter();

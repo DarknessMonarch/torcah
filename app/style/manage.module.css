@@ -1,0 +1,256 @@
+@media screen {
+  .manageWrapper {
+    gap: 10px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    background-color: var(--background-color-light);
+  }
+
+  .manageContainer {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .manageAccount {
+    gap: 10px;
+    flex: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .accountDetails {
+    flex: 50%;
+    gap: 10px;
+    display: flex;
+    padding: 20px;
+    border-radius: 20px;
+    justify-content: space-between;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+  }
+
+  .accountHalf {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .accountHalfD {
+    gap: 20px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .balanceIcon {
+    cursor: pointer;
+  }
+
+  .halfAcc {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .halfAcc span {
+    font-size: 1rem;
+    font-weight: 300px;
+  }
+
+  .halfAcc h1 {
+    font-size: 1.6rem;
+    font-weight: 600px;
+  }
+
+  .barChart {
+    display: none;
+  }
+
+  .hideBalance {
+    height: 40px;
+    width: 100px;
+    border-radius: 8px;
+    background-color: var(--background-color);
+  }
+
+  .accountBtn {
+    gap: 10px;
+    padding: 10px;
+    display: flex;
+    cursor: pointer;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+  }
+
+  .widthdrawIcon {
+    color: var(--secondary-color);
+  }
+
+  .accountStats {
+    gap: 10px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .accountStats h1 {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .accountIconW {
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .accountCardContain {
+    gap: 10px;
+    flex: 40%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .accountIconB {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    padding: 15px;
+    border-radius: 20px;
+    flex-direction: column;
+    background-color: var(--background-color);
+  }
+
+  .accountIconB h4 {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+
+  .accountIconB h1 {
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+
+  .accountIcon {
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--background-color-light);
+  }
+
+  .manageEnterprise {
+    background-color: var(--background-color);
+    flex-direction: column;
+    border-radius: 20px;
+    display: flex;
+    flex: 30%;
+    gap: 5px;
+  }
+
+  .foodImg {
+    object-position: center;
+    border-radius: 20px;
+    object-fit: cover;
+    height: 200px;
+    width: 100%;
+  }
+
+  .componentFood {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .componentFoodTop {
+    width: 90%;
+    top: -2px;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    border-radius: 0 0 20px 20px;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+  }
+
+  .componentFoodTop h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .componentFoodBottom {
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    border-radius: 0 0 20px 20px;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+  }
+
+  .componentFoodBottom h4 {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+  .componentFoodA {
+    flex-direction: column;
+    padding: 10px;
+    display: flex;
+  }
+
+  .componentFoodA h3 {
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: #bebdbd;
+  }
+
+  .componentFoodA h2 {
+    font-weight: 300;
+    font-size: 1rem;
+  }
+}
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  
+  .manageContainer {
+    flex-direction: row;
+
+  }
+
+
+  .halfAcc span {
+    font-size: 1rem;
+    font-weight: 300px;
+  }
+
+  .halfAcc h1 {
+    font-size: 2.6rem;
+    font-weight: 600px;
+  }
+
+  .barChart {
+    display: flex;
+    height: 140px;
+  }
+
+  .hideBalance {
+    height: 60px;
+    width: 180px;
+  }
+
+  .accountBtn {
+    padding: 10px 20px;
+
+  }
+
+
+ 
+}

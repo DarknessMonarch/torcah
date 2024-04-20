@@ -42,6 +42,11 @@
     flex-direction: column;
   }
 
+  .formHeader span {
+    font-weight:800;
+    color: var(--secondary-color);
+  }
+
   .formHeader h1 {
     font-size: 1.5rem;
     font-weight: 400;
@@ -59,6 +64,8 @@
     align-items: center;
   }
 
+  
+
   .authInput {
     border-bottom: 1px solid var(--background-color);
   }
@@ -75,6 +82,23 @@
   .authInput input::placeholder {
     font-size: 0.8rem;
     color: var(--background-color);
+  }
+
+  .authInput select {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    background: transparent;
+    text-transform: capitalize;
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+  }
+
+  .authInput option {
+    padding: 10px;
   }
 
   .showBtn {
@@ -189,11 +213,13 @@
   .authComponent {
     padding: 0;
     display: flex;
+    overflow-y: hidden;
     flex-direction: row;
     background-color: var(--background-color);
   }
 
   .authWrapper {
+    gap:0;
     padding:0  100px;
   }
 
@@ -203,6 +229,10 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+  }
+
+  .formContainer {
+    gap: 25px;
   }
 
   .authComponentBgImage {
