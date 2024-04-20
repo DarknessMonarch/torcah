@@ -13,9 +13,9 @@ import {
 export default function TableComponent({ Title, TableData }) {
   const router = useRouter();
 
-  const chatUser = (id) => {
-    router.push(`/manage/chat/${id}`);
-  };
+  // const chatUser = (id) => {
+  //   router.push(`/manage/chat/${id}`);
+  // };
 
   const editData = (id) => {
     router.push(`/manage/edit/${id}`);
@@ -84,13 +84,13 @@ export default function TableComponent({ Title, TableData }) {
                         width={30}
                         height={30}
                       />
-                      <ChatIcon
+                      {/* <ChatIcon
                         onClick={() => chatUser(1)}
                         className={styles.chatIcon}
                         alt="delete icon"
                         width={30}
                         height={30}
-                      />
+                      /> */}
                       <DeleteIcon
                         onClick={() => deleteData()}
                         className={styles.deleteIcon}

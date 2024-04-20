@@ -55,6 +55,7 @@ export default function Navbar() {
           className={`${styles.LinkContainer} ${
             pathname === "/page/home" ? styles.activeLink : ""
           }`}
+         
         >
           Home
         </Link>
