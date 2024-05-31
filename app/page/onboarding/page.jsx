@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Loader from "@/app/components/Loader";
 import { useAuthStore } from "@/app/store/Auth";
-import RentImage from "@/public/assets/rent.png";
+import RentImage from "@/public/assets/rent.png"; 
 import styles from "@/app/style/onboarding.module.css";
 import DeliveryImage from "@/public/assets/delivery.png";
 import BusinessImage from "@/public/assets/business.png";

@@ -213,7 +213,7 @@ export default function Navbar() {
           </Link>
           {role !== null && role === "Business" ? (
             <Link
-              href="/page/manage"
+              href="/page/nom"
               className={`${styles.sideLinkContainer} ${
                 pathname === "/page/manage" ? styles.activeLink : ""
               }`}

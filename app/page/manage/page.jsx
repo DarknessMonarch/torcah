@@ -16,6 +16,7 @@ import {
   ArrowUpRightIcon as IncreaseIcon,
   ArrowDownLeftIcon as DecreaseIcon,
 } from "@heroicons/react/24/outline";
+
 import TableComponent from "@/app/components/TableComponent";
 
 const tableData = [

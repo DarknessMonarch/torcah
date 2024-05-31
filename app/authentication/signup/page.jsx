@@ -24,8 +24,14 @@ export default function SignUp() {
   const { isAuth, toggleAuth } = useAuthStore();
   const [terms, setTerms] = useState(false);
   const [role, setRole] = useState("Business"); 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const router = useRouter();
+  const SERVER_API = process.env.NEXT_PUBLIC_SERVER_API;
 
   const handleTermsChange = (event) => {
     setTerms(event.target.checked);
@@ -55,27 +61,53 @@ export default function SignUp() {
     router.push("login", { scroll: false });
   };
 
+
   async function onSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
-      const formData = new FormData(e.currentTarget);
-      // const response = await fetch("/api/submit", {
-      //   method: "POST",
-      //   body: formData,
-      // });
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Password does not match");
+      setIsLoading(false);
+      return;
+    }
 
-      toggleAuth('ssiahis', role); 
-      toast.success("Welcome");
-      router.push("/page/home", { scroll: false });
+    try {
+      const response = await fetch(`${SERVER_API}/auth/register`, {
+        method: "POST",
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+          confirmPassword: formData.confirmPassword,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      const token = data.token;
+      localStorage.setItem("token", token);
+      router.push("/page/dashboard");
+      toast.success("Account created successfully! ");
+      setFormData({
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+      setTerms(false); 
     } catch (error) {
-      console.error(error);
-      toast.error("Sign up failed");
+      if (error.response === 400) {
+        toast.error(error.message);
+      }
+      toast.error('Invalid credentials')
     } finally {
       setIsLoading(false);
     }
   }
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className={styles.authComponent}>
@@ -191,10 +223,10 @@ export default function SignUp() {
               onChange={(e) => setRole(e.target.value)}
               className={styles.roleSelect}
             >
-              <option value="Business">Add your Business</option>
+              <option value="business">Add your Business</option>
               <option value="House">Add your House</option>
               <option value="Car">Add your Car</option>
-              <option value="Driver">Be a Driver</option>
+              <option value="Driver">Add your store</option>
             </select>
           </div>
           <div className={styles.formChange}>

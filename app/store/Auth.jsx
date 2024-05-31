@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 export const useAuthStore = create((set) => ({
-  isAuth: false,
+  isAuth: true,
   role: null,
   token: null,
   toggleAuth: (token, role) => {
@@ -14,6 +14,6 @@ export const useAuthStore = create((set) => ({
     localStorage.removeItem('token');
     localStorage.removeItem('role');
 
-    set({ isAuth: false, token: null, role: 'user' });
+    set({ isAuth: false, token: null, role: 'Business' });
   },
 }));

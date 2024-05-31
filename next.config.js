@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-   
+    SERVER_API: 'https://climbing-touched-earwig.ngrok-free.app//torcah/api/v1/',
   },
   images: {
     remotePatterns: [

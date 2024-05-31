@@ -1,11 +1,13 @@
 @media screen {
   .formContainer {
     gap: 10px;
+    height: 100%;
     display: flex;
     padding: 10px;
     align-items: top;
     flex-direction: column;
     justify-content: space-between;
+
   }
 
   .formHeader {
@@ -71,7 +73,7 @@
     padding: 10px;
     color: var(--primary-color);
     background-color: #f6f6f6;
-  }
+  }   
 
   .formInput input::placeholder {
     color: var(--primary-color);

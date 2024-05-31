@@ -54,8 +54,10 @@
     cursor: pointer;
     font-size: .8rem;
     width: fit-content;
-    border-radius: 8px;
     position: relative;
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 12px 0 12px 0;
   }
 
   .btnOnboardingRent {
@@ -71,32 +73,35 @@
 
   .btnOnboardingBusiness {
     width: 100px;
-    color: var(--background-color);
-    background-color: var(--primary-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
   }
 
   .btnOnboardingBusiness:hover {
-    background-color: #0d3544;
+    background-color: var(--primary-color);
+    color: var(--background-color);
   }
 
   .btnOnboardingDelivery {
     width: 100px;
-    color: var(--background-color);
-    background-color: var(--tertiary-color);
+    color: var(--tertiary-color);
+    border: 2px solid var(--tertiary-color);
   }
 
   .btnOnboardingDelivery:hover {
-    background-color: #eb3d37;
+    background-color: var(--tertiary-color);
+    color: var(--background-color);
   }
 
   .btnOnboardingRent {
     width: 100px;
-    color: var(--background-color);
-    background-color: var(--secondary-color);
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
   }
 
   .btnOnboardingRent:hover {
-    background-color: #40d840;
+    background-color:var(--secondary-color);
+    color: var(--background-color);
   }
 
   .onboardingImage {
@@ -165,26 +170,20 @@
 
   .btnOnboardingBusiness {
     right: 65px;
-    bottom: -60px;
+    bottom: -70px;
     width: fit-content;
-    color: var(--background-color);
-    background-color: var(--primary-color);
   }
 
   .btnOnboardingDelivery {
     right: 80px;
-    bottom: -60px;
+    bottom: -70px;
     width: fit-content;
-    color: var(--background-color);
-    background-color: var(--tertiary-color);
   }
 
   .btnOnboardingRent {
     top: 80px;
     right: 10px;
     width: fit-content;
-    color: var(--background-color);
-    background-color: var(--secondary-color);
   }
 
 }
