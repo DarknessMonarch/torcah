@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import logo from "@/public/assets/logo.png";
 import { useRouter } from "next/navigation";
 import Loader from "@/app/components/Loader";
-import { useAuthStore } from "@/app/store/Auth";
 import styles from "@/app/style/auth.module.css";
 
 import {

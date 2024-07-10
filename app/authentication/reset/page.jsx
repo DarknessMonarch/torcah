@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import logo from "@/public/assets/logo.png";
 import { useRouter } from "next/navigation";
 import Loader from "@/app/components/Loader";
-import { useAuthStore } from "@/app/store/Auth";
 import styles from "@/app/style/auth.module.css";
 
 import {
@@ -19,7 +18,6 @@ export default function Reset() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuth, toggleAuth } = useAuthStore();
   const [terms, setTerms] = useState(false);
 
   const router = useRouter();
