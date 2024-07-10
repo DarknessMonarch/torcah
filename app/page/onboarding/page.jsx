@@ -15,9 +15,6 @@ export default function OnboardingPage() {
   const [isAuth, setAuth] = useState(false);
   const router = useRouter();
 
-  const openMore = () => {
-    router.push("/authentication/login");
-  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -52,14 +49,7 @@ export default function OnboardingPage() {
   };
 
   const delivery = () => {
-    if(isAuth) {
-      router.push("join", { scroll: false });
-
-    } else {
-      router.push("/authentication/login", { scroll: false });
-
-    }
-    toast.error("Login to onboard");
+    toast.success("Sorry, we are currently using our own drivers");
   };
 
   return (
