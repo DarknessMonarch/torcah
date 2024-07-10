@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "@/app/style/success.module.css";
 
 import {
@@ -9,15 +9,21 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function SuccessPage() {
-  const [approved, setapproved] = useState(false);
+  const [isActive, setActive] = useState(false);
 
-  const toggleApproved= () => {
-    setapproved(!approved);
-  }
+  useEffect(() => {
+    const approved = localStorage.getItem("isActive");
+    if (approved && approved !== "") {
+      setActive(approved);
+    } else {
+      setActive(false);
+    }
+  }, []);
+
 
   return (
     <div className={styles.sucessComponent}>
-      {approved != false ? (
+      {isActive !== false ? (
         <div className={styles.checkComponent}>
           <PassIcon
             className={styles.CheckIcon}

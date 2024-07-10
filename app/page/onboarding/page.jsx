@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import toast from "react-hot-toast";
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation";
 import Loader from "@/app/components/Loader";
-import { useAuthStore } from "@/app/store/Auth";
 import RentImage from "@/public/assets/rent.png"; 
 import styles from "@/app/style/onboarding.module.css";
 import DeliveryImage from "@/public/assets/delivery.png";
@@ -13,14 +12,24 @@ import BusinessImage from "@/public/assets/business.png";
 
 export default function OnboardingPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuth, toggleAuth } = useAuthStore();
+  const [isAuth, setAuth] = useState(false);
   const router = useRouter();
 
   const openMore = () => {
     router.push("/authentication/login");
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token && token !== '') {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+  }, []);
+
   const business = () => {
+   
     if(isAuth) {
       router.push("join", { scroll: false });
 
@@ -28,6 +37,7 @@ export default function OnboardingPage() {
       router.push("/authentication/login", { scroll: false });
 
     }
+    toast.error("Login to onboard");
   };
 
   const rent = () => {
@@ -38,6 +48,7 @@ export default function OnboardingPage() {
       router.push("/authentication/login", { scroll: false });
 
     }
+    toast.error("Login to onboard");
   };
 
   const delivery = () => {
@@ -48,6 +59,7 @@ export default function OnboardingPage() {
       router.push("/authentication/login", { scroll: false });
 
     }
+    toast.error("Login to onboard");
   };
 
   return (

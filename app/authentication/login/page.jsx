@@ -6,21 +6,24 @@ import toast from "react-hot-toast";
 import logo from "@/public/assets/logo.png";
 import { useRouter } from "next/navigation";
 import Loader from "@/app/components/Loader";
-import { useAuthStore } from "@/app/store/Auth";
 import styles from "@/app/style/auth.module.css";
 
 import {
   KeyIcon as PasswordIcon,
-  UserIcon as UserNameIcon,
+  EnvelopeIcon as EmailIcon,
   EyeIcon as ShowPasswordIcon,
   EyeSlashIcon as HidePasswordIcon,
 } from "@heroicons/react/24/outline";
 
-export default function SignUp() {
+export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuth, toggleAuth } = useAuthStore();
+  const [role, setRole] = useState("customer");
   const [terms, setTerms] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
   const router = useRouter();
 
@@ -40,38 +43,73 @@ export default function SignUp() {
     router.push("/page/terms", { scroll: false });
   };
 
-  const SignUp = () => {
-    router.push("signup", { scroll: false });
+  const Onboard = () => {
+    router.push("/page/onboarding", { scroll: false });
   };
+
+  const SERVER_API = process.env.NEXT_PUBLIC_SERVER_API;
 
   async function onSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const formData = new FormData(e.currentTarget);
-      // const response = await fetch("/api/submit", {
-      //   method: "POST",
-      //   body: formData,
-      // });
+      const response = await fetch(`${SERVER_API}/${role}/login`, {
+        method: "POST",
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      const token = data.token;
+      const roleID = data.role.id;
+      const active =data.enabled;
+      localStorage.setItem("token", token);
+      localStorage.setItem("roleID", roleID);
+      localStorage.setItem("role", role);
+      localStorage.setItem("isActive", active);
 
-      toggleAuth();
-      toast.success("Welcome");
-      router.push("/page/home", { scroll: false });
+      if(role == "business") {
+        router.push("/page/manage", { scroll: false });
+
+      } else {
+        router.push("/page/home", { scroll: false });
+
+      }
+      localStorage.setItem("isAuth", true);
+      toast.success("Welcome back! ");
+      setFormData({
+        email: "",
+        password: "",
+      });
+      setTerms(false);
     } catch (error) {
-      console.error(error);
-      toast.error("Sign up failed");
+      if (error.response === 400) {
+        toast.error(error.message);
+      } else if (error.response === 404) {
+        toast.error("User not found");
+      } else {
+        toast.error("Invalid credentials");
+      }
     } finally {
       setIsLoading(false);
     }
   }
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className={styles.authComponent}>
       <div className={styles.authComponentBgImage}>
         <Image
           src={logo}
-          alt="signup Image"
+          alt="Onboard Image"
           quality="100"
           objectFit="contain"
         />
@@ -79,22 +117,26 @@ export default function SignUp() {
       <div className={styles.authWrapper}>
         <form onSubmit={onSubmit} className={styles.formContainer}>
           <div className={styles.formHeader}>
-            <h1>Login</h1>
+            <h1>
+              Login as a <span>{role}</span>
+            </h1>
             <p>Enter your account details</p>
           </div>
-          {/* Username */}
+          {/* Email */}
           <div className={styles.authInput}>
-            <UserNameIcon
+            <EmailIcon
               className={styles.authIcon}
-              alt="Username icon"
+              alt="Enail icon"
               width={20}
               height={20}
             />
             <input
               type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
+              name="Email"
+              id="Email"
+              placeholder="Email"
+              onChange={handleChange}
+              required
             />
           </div>
           {/*  password */}
@@ -111,6 +153,8 @@ export default function SignUp() {
               name="Password"
               id="Password"
               placeholder="Password"
+              onChange={handleChange}
+              required
             />
             <button
               type="button"
@@ -131,6 +175,17 @@ export default function SignUp() {
                 />
               )}
             </button>
+          </div>
+          {/* Role dropdown */}
+          <div className={styles.authInput}>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className={styles.roleSelect}
+            >
+              <option value="customers">Customer</option>
+              <option value="business">Business</option>
+            </select>
           </div>
           <div className={styles.termsContainer}>
             <input
@@ -155,14 +210,12 @@ export default function SignUp() {
             </p>
           </div>
           <h3>
-            Don’t have an account?{" "}
-            <div className={styles.btnLogin} onClick={SignUp}>
-              Sign up
+             Onboard your business?{" "}
+            <div className={styles.btnLogin} onClick={Onboard}>
+              OnBoard
             </div>
           </h3>
-          </form>
-
-      
+        </form>
       </div>
     </div>
   );

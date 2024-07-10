@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Logo from "@/public/assets/logo.png";
 import { usePathname } from "next/navigation";
-import { useAuthStore } from "@/app/store/Auth";
 import styles from "@/app/style/navbar.module.css";
 import {
   XMarkIcon as CloseIcon,
@@ -16,11 +15,14 @@ import {
   Bars3BottomRightIcon as MenuIcon,
   ArrowLeftStartOnRectangleIcon as LogOutIcon,
 } from "@heroicons/react/24/outline";
+import { flightRouterStateSchema } from "next/dist/server/app-render/types";
 
 export default function Navbar() {
   const router = useRouter();
   const [show, setShow] = useState(false);
-  const { isAuth, role, toggleAuth } = useAuthStore();
+  const [isAuth, setAuth] = useState(false);
+  const [role, setRole] = useState(null);
+  const [isActive, setActive] = useState(false);
   const [profileImg, setProfileImg] = useState(
     "https://static.wikia.nocookie.net/p__/images/b/bf/Sung_Jin-Woo_manhwa_render_cool.webp/revision/latest/scale-to-width-down/250?cb=20230918011835&path-prefix=protagonist"
   );
@@ -31,6 +33,27 @@ export default function Navbar() {
   const toggleShow = () => {
     setShow(!show);
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const roles = localStorage.getItem("role");
+    const approved = localStorage.getItem("isActive");
+    if (token && token !== "") {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+    if (roles && roles !== "") {
+      setRole(roles);
+    } else {
+      setRole("customer");
+    }
+    if (approved && approved !== "") {
+      setActive(approved);
+    } else {
+      setActive(false);
+    }
+  }, []);
 
   const Login = () => {
     router.push("/authentication/login", { scroll: false });
@@ -55,7 +78,6 @@ export default function Navbar() {
           className={`${styles.LinkContainer} ${
             pathname === "/page/home" ? styles.activeLink : ""
           }`}
-         
         >
           Home
         </Link>
@@ -83,7 +105,8 @@ export default function Navbar() {
         >
           Onboarding
         </Link>
-        {role !== null && role === "Business" ? (
+        {role !== null && role === "business" ? (
+          isActive !== false ? (
             <Link
               href="/page/manage"
               className={`${styles.LinkContainer} ${
@@ -92,16 +115,17 @@ export default function Navbar() {
             >
               Manage
             </Link>
-          ) : role !== null && role !== "Business" ? (
+          ) : (
             <Link
               href="/page/status"
               className={`${styles.LinkContainer} ${
-                pathname === "/page/manage" ? styles.activeLink : ""
+                pathname === "/page/status" ? styles.activeLink : ""
               }`}
             >
               Status
             </Link>
-          ) : null}
+          )
+        ) : null}
       </div>
       <MenuIcon
         onClick={() => toggleShow()}
@@ -211,37 +235,40 @@ export default function Navbar() {
               height={20}
             />
           </Link>
-          {role !== null && role === "Business" ? (
-            <Link
-              href="/page/nom"
-              className={`${styles.sideLinkContainer} ${
-                pathname === "/page/manage" ? styles.activeLink : ""
-              }`}
-            >
-              Manage{" "}
-              <RightIcon
-                className={styles.arrowIcon}
-                alt="right icon"
-                width={20}
-                height={20}
-              />
-            </Link>
-          ) : role !== null && role !== "Business" ? (
-            <Link
-              href="/page/status"
-              className={`${styles.sideLinkContainer} ${
-                pathname === "/page/manage" ? styles.activeLink : ""
-              }`}
-            >
-              Status{" "}
-              <RightIcon
-                className={styles.arrowIcon}
-                alt="right icon"
-                width={20}
-                height={20}
-              />
-            </Link>
+          {role !== null && role === "business" ? (
+            isActive !== false ? (
+              <Link
+                href="/page/manage"
+                className={`${styles.sideLinkContainer} ${
+                  pathname === "/page/manage" ? styles.activeLink : ""
+                }`}
+              >
+                Manage{" "}
+                <RightIcon
+                  className={styles.arrowIcon}
+                  alt="right icon"
+                  width={20}
+                  height={20}
+                />
+              </Link>
+            ) : (
+              <Link
+                href="/page/status"
+                className={`${styles.sideLinkContainer} ${
+                  pathname === "/page/status" ? styles.activeLink : ""
+                }`}
+              >
+                Status{" "}
+                <RightIcon
+                  className={styles.arrowIcon}
+                  alt="right icon"
+                  width={20}
+                  height={20}
+                />
+              </Link>
+            )
           ) : null}
+
           <Link
             href="/page/onboarding"
             className={`${styles.sideLinkContainer} ${
